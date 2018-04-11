@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<style>
+
+#input-box {
+    position: relative;
+    width:100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#results-container {
+    margin: 10px;
+    position: relative;
+}
+
+.result-field, .header-field {
+    border: 1px solid #777;
+    width: 10%;
+    float: left;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.header-field {
+    font-weight: bold;
+}
+
+.clear {
+    clear: left;
+}
+</style>
+
+</head>
+<body>
+    <input id="input-box"></input>
+    <div id="results-container">
+        <div class="header-field">char</div>
+        <div class="header-field">charCode</div>
+        <div class="header-field">key</div>
+        <div class="header-field">keyCode</div>
+        <div class="header-field">shift</div>
+        <div class="header-field">alt</div>
+        <div class="header-field">ctrl</div>
+        <div class="header-field">meta</div>
+        <div class="clear"></div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+    'use strict';
+
+    var resultsContainer = $("#results-container");
+    var inputBox = $("#input-box");
+
+
+
+    inputBox.on('keyup', (event) => {
+      if (event.key === "Shift" || event.key === "Control" || event.key === "Alt" || event.key == "Meta") {
+          console.log(event.key)
+          return
+      }
+      const sEvent = {
+          "char" : event.char,
+          "charCode" : event.charCode,
+          "key" : event.key,
+          "keyCode" : event.keyCode,
+          "shift" : event.shiftKey,
+          "alt" : event.altKey,
+          "ctrl" : event.ctrlKey,
+          "meta" : event.metaKey,
+      }
+
+      for (let prop in sEvent) {
+         resultsContainer.append("<div class='result-field'>" + sEvent[prop] + "</div>")
+      }
+      resultsContainer.append("<div class='clear'><div>")
+
+      inputBox.val("")
+
+    });
+
+    </script>
+
+</body>
+</html>
