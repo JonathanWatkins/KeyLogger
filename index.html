@@ -46,6 +46,8 @@
         <div class="header-field">alt</div>
         <div class="header-field">ctrl</div>
         <div class="header-field">meta</div>
+        <div class="header-field">utf-16(dec)</div>
+        <div class="header-field">utf-16(hex)</div>
         <div class="clear"></div>
 
     </div>
@@ -74,6 +76,8 @@
           "alt" : event.altKey,
           "ctrl" : event.ctrlKey,
           "meta" : event.metaKey,
+          "utf-16-dec" :event.key.charCodeAt(0),
+          "utf-16-hex" :event.key.charCodeAt(0).toString(16)
       }
 
       for (let prop in sEvent) {
