@@ -56,14 +56,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
 
-    'use strict';
+    'use strict'
 
-    var resultsContainer = $("#results-container");
-    var inputBox = $("#input-box");
+    var resultsContainer = $("#results-container")
+    var inputBox = $("#input-box")
 
 
 
-    inputBox.on('keyup', (event) => {
+    inputBox.on('keyup', function(event) {
       if (event.key === "Shift" || event.key === "Control" || event.key === "Alt" || event.key == "Meta") {
           console.log(event.key)
           return
@@ -81,12 +81,12 @@
           "utf-16-hex" :event.key.charCodeAt(0).toString(16)
       }
 
-      for (let prop in sEvent) {
+      for (var prop in sEvent) {
          resultsContainer.append("<div class='result-field'>" + sEvent[prop] + "</div>")
       }
       resultsContainer.append("<div class='clear'><div>")
 
-      inputBox.val("")
+      // inputBox.val("")
 
     });
 
